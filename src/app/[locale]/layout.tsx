@@ -88,6 +88,7 @@ export default async function LocaleLayout({
     "@type": "Organization",
     name: isAr ? SITE_CONFIG.brandFullName.ar : SITE_CONFIG.brandFullName.en,
     url: `${SITE_CONFIG.siteUrl}/${locale}`,
+    logo: `${SITE_CONFIG.siteUrl}/images/vistara-logo.png`,
     areaServed: SITE_CONFIG.serviceAreas.map((a) => ({
       "@type": "City",
       name: isAr ? a.ar : a.en,

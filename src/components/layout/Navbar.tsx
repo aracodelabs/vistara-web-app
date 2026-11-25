@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { ChevronDown, Globe, Menu, X } from "lucide-react";
@@ -69,23 +70,18 @@ export function Navbar({ services }: { services: NavServiceLink[] }) {
         {/* Brand Logo */}
         <Link
           href="/"
+          aria-label={brandName}
           className="flex shrink-0 items-center gap-2.5 rounded-lg py-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#014421]"
           onClick={() => setMobileOpen(false)}
         >
-          <span
-            aria-hidden="true"
-            className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#013220] text-lg font-bold text-[#F7F8F4] shadow-sm"
-          >
-            V
-          </span>
-          <div className="flex flex-col leading-tight">
-            <span className="text-lg font-bold tracking-tight text-[#013220]">
-              {brandName}
-            </span>
-            <span className="hidden text-[11px] font-medium tracking-wider text-[#355E3B] uppercase sm:block">
-              {locale === "ar" ? "قطر" : "Qatar"}
-            </span>
-          </div>
+          <Image
+            src="/images/vistara-logo.png"
+            alt={brandName}
+            width={140}
+            height={84}
+            priority
+            className="h-11 w-auto object-contain sm:h-12"
+          />
         </Link>
 
         {/* Desktop Navigation */}

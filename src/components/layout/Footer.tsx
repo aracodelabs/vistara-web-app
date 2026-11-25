@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
@@ -40,17 +41,18 @@ export async function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand Column */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2.5">
-              <span
-                aria-hidden="true"
-                className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F7F8F4] text-lg font-bold text-[#013220]"
-              >
-                V
-              </span>
-              <span className="text-lg font-bold tracking-tight text-white">
-                {brandName}
-              </span>
-            </div>
+            <Link
+              href="/"
+              className="inline-flex items-center rounded-2xl bg-white px-4 py-2.5 shadow-sm transition-opacity hover:opacity-95"
+            >
+              <Image
+                src="/images/vistara-logo.png"
+                alt={brandName}
+                width={150}
+                height={90}
+                className="h-12 w-auto object-contain"
+              />
+            </Link>
             <p className="text-sm leading-relaxed text-[#E8F0E8]/85">
               {t("description")}
             </p>

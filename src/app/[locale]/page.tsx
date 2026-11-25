@@ -118,7 +118,8 @@ export default async function HomePage({
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-6">
-              <span className="inline-flex items-center gap-2 rounded-full bg-[#E8F0E8] px-4 py-1.5 text-xs font-semibold tracking-wide text-[#014421]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#6BAE00]/30 bg-[#E8F0E8] px-4 py-1.5 text-xs font-semibold tracking-wide text-[#014421]">
+                <span aria-hidden="true" className="h-2 w-2 rounded-full bg-[#6BAE00]" />
                 <MapPin className="h-3.5 w-3.5" />
                 <span>{heroT("eyebrow")}</span>
               </span>
