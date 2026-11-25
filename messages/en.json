@@ -1,0 +1,423 @@
+{
+  "metadata": {
+    "siteName": "Vistara Cleaning Services",
+    "defaultTitle": "Vistara | Luxury Residential & Commercial Cleaning Services in Qatar",
+    "defaultDescription": "Premium residential and commercial cleaning services across Doha, Lusail, The Pearl, West Bay, Al Wakrah, and Al Rayyan. Request a tailored quotation via WhatsApp."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "allServices": "All Cleaning Services",
+    "residential": "Residential Cleaning",
+    "commercial": "Commercial Cleaning",
+    "specialized": "Specialized & Deep Care",
+    "faq": "FAQ",
+    "contact": "Contact Us",
+    "quote": "Book a Service",
+    "whatsapp": "WhatsApp",
+    "languageLabel": "العربية",
+    "languageAria": "Switch language to Arabic",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
+  },
+  "hero": {
+    "eyebrow": "Doha • Lusail • The Pearl • West Bay",
+    "title": "Experience a Cleaner, Healthier and More Beautiful Space",
+    "description": "Premium residential and commercial cleaning solutions delivered by attentive, uniformed teams across Qatar—tailored for luxury villas, modern apartments, and executive offices.",
+    "primaryCta": "Explore Services",
+    "secondaryCta": "Contact Us on WhatsApp",
+    "badgeLabel": "Direct WhatsApp Consultation",
+    "badgeSub": "Appointments arranged personally after confirming your property requirements",
+    "imageAlt": "Sunlit luxury modern Doha villa living room with spotless travertine marble floors"
+  },
+  "trust": {
+    "eyebrow": "Our Foundation",
+    "title": "Built Around Care, Discretion & Dependable Standards",
+    "items": [
+      {
+        "title": "Residential & Commercial Cleaning",
+        "description": "Dedicated teams equipped for private villas, waterfront apartments, majlis lounges, and corporate offices across Qatar."
+      },
+      {
+        "title": "Professional Cleaning Approach",
+        "description": "Structured room-by-room checklists and surface-conscious care for marble, timber, upholstery, and stone."
+      },
+      {
+        "title": "Flexible Service Arrangements",
+        "description": "One-time deep cleans, move-in handovers, or recurring visits coordinated smoothly around your household or office schedule."
+      },
+      {
+        "title": "Customer-Focused Communication",
+        "description": "Direct, responsive consultation via WhatsApp to review your space and confirm every requirement before your visit."
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "About Vistara",
+    "title": "Quiet Luxury in Every Detail of Property Care",
+    "lead": "Vistara is a Qatar-based cleaning services company focused on thoughtful, thorough care for private residences and commercial spaces.",
+    "body1": "From multi-level family villas and formal majlis rooms to waterfront apartments in The Pearl-Qatar and executive offices in West Bay and Lusail, our focus is consistent execution without disruption.",
+    "body2": "Every visit begins with clear communication. Rather than forcing rigid packages, we listen to your property's needs via WhatsApp, select appropriate equipment and surface-safe solutions, and coordinate a visit plan that fits your schedule.",
+    "highlightsTitle": "How We Serve Qatar",
+    "highlights": [
+      "Surface-appropriate care for natural marble, hardwood, glass, and delicate fabrics",
+      "Uniformed, attentive personnel respecting household privacy and workplace protocols",
+      "Coverage across Doha, Lusail, The Pearl, West Bay, Al Wakrah, and Al Rayyan",
+      "Transparent scope confirmation prior to every scheduled appointment"
+    ],
+    "cta": "Learn More About Us",
+    "imageAlt": "Uniformed Vistara cleaning specialist polishing a marble console table in a Doha residence",
+    "pageTitle": "About Vistara Cleaning Services in Qatar",
+    "pageDescription": "Learn about our residential and commercial cleaning philosophy, quality standards, and service coverage across Doha, Lusail, The Pearl, West Bay, Al Wakrah, and Al Rayyan.",
+    "pillarsTitle": "Our Service Philosophy",
+    "pillars": [
+      {
+        "title": "Who We Are",
+        "description": "A dedicated cleaning service provider operating in Qatar, built to meet the expectations of discerning homeowners, tenants, and facility managers."
+      },
+      {
+        "title": "Commitment to Quality",
+        "description": "We emphasize methodical detailing—from hidden ledges and grout lines to delicate upholstery—using equipment suited to each material."
+      },
+      {
+        "title": "Privacy & Respect",
+        "description": "Our teams work discreetly and respectfully inside private villas, family residences, and active corporate offices."
+      },
+      {
+        "title": "Service Coverage in Qatar",
+        "description": "We serve residential and commercial properties in Doha, Lusail, The Pearl-Qatar, West Bay, Al Wakrah, and Al Rayyan."
+      }
+    ]
+  },
+  "services": {
+    "eyebrow": "Tailored Cleaning Solutions",
+    "title": "Our Cleaning Services in Qatar",
+    "subtitle": "Explore specialized residential, commercial, and deep-care services designed for the architecture, climate, and materials of properties in Qatar.",
+    "viewAll": "View All Services",
+    "learnMore": "Learn More",
+    "inquireWhatsapp": "WhatsApp Inquiry",
+    "requestQuote": "Request a Quotation",
+    "filterAll": "All Services",
+    "filterResidential": "Residential",
+    "filterCommercial": "Commercial",
+    "filterSpecialized": "Specialized & Deep Care",
+    "pageTitle": "Cleaning Services in Qatar",
+    "pageDescription": "Browse Vistara's complete residential, commercial, and specialized cleaning services across Doha and surrounding Qatar areas.",
+    "detail": {
+      "overview": "Service Overview",
+      "includedTitle": "What Is Included",
+      "idealForTitle": "Ideal Spaces & Occasions",
+      "processTitle": "Our Service Process",
+      "faqTitle": "Common Questions About This Service",
+      "relatedTitle": "Related Cleaning Services",
+      "includedServicesTitle": "Explore Services in This Category",
+      "ctaTitle": "Ready to Discuss Your Property?",
+      "ctaDescription": "Share your property size, area in Qatar, and preferred timing. Our team will respond via WhatsApp to confirm details and arrange your cleaning appointment.",
+      "whatsappButton": "Inquire on WhatsApp",
+      "quoteButton": "Complete Quotation Form",
+      "appointmentNote": "Appointments are confirmed personally with our team after reviewing your requirements on WhatsApp."
+    }
+  },
+  "whyChoose": {
+    "eyebrow": "The Vistara Standard",
+    "title": "Why Property Owners & Businesses Choose Us",
+    "subtitle": "We focus on the fundamentals that make a noticeable difference in how your home or office looks and feels.",
+    "items": [
+      {
+        "title": "Professional Cleaning Approach",
+        "description": "Organized workflows ensure consistent results across living spaces, kitchens, bathrooms, and workstations."
+      },
+      {
+        "title": "Attention to Detail",
+        "description": "Careful focus on skirting boards, glass edges, chrome fixtures, cabinetry fronts, and high-touch points."
+      },
+      {
+        "title": "Flexible Scheduling",
+        "description": "Visits are coordinated around your family routine or business operating hours for minimal interruption."
+      },
+      {
+        "title": "Customer-Focused Service",
+        "description": "Clear WhatsApp communication from your initial inquiry through scope confirmation and service completion."
+      },
+      {
+        "title": "Suitable Cleaning Equipment",
+        "description": "We use extraction machines, steam units, and microfiber tools selected for specific fabric and floor types."
+      },
+      {
+        "title": "Quality-Focused Process",
+        "description": "Every assignment ends with a careful walkthrough against the agreed scope before wrap-up."
+      }
+    ]
+  },
+  "howItWorks": {
+    "eyebrow": "Simple & Transparent",
+    "title": "How It Works",
+    "subtitle": "Four clear steps from your initial message to a spotless space—with personal confirmation at every stage.",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Choose Your Service",
+        "description": "Explore our residential, commercial, or specialized cleaning services to identify the care your property needs."
+      },
+      {
+        "number": "02",
+        "title": "Contact Us",
+        "description": "Reach out directly on WhatsApp or submit our quotation form with your property type and area in Qatar."
+      },
+      {
+        "number": "03",
+        "title": "Confirm Your Requirements",
+        "description": "Our coordinator reviews your property details, clarifies priorities, and shares a tailored quotation."
+      },
+      {
+        "number": "04",
+        "title": "Arrange Your Cleaning Service",
+        "description": "Once details are agreed together, your appointment date and time are confirmed and our team arrives prepared."
+      }
+    ],
+    "note": "Please note: submitting an online inquiry does not automatically lock a booking slot. Every appointment is confirmed directly with our service team via WhatsApp."
+  },
+  "segments": {
+    "eyebrow": "Dedicated Care Divisions",
+    "title": "Solutions for Private Residences & Commercial Spaces",
+    "residential": {
+      "badge": "Residential Division",
+      "title": "Villas, Apartments & Private Majlis Care",
+      "description": "Maintain an inviting, dust-free sanctuary across Doha, Lusail, The Pearl, and Al Rayyan with discreet home care tailored to natural stone, fine fabrics, and busy households.",
+      "bullets": [
+        "Villa & multi-level residence cleaning",
+        "Apartment & penthouse upkeep",
+        "Majlis, sofa, carpet, mattress & curtain care",
+        "Move-in & move-out handover preparation"
+      ],
+      "cta": "Explore Residential Services",
+      "imageAlt": "Luxury sunlit apartment overlooking West Bay waterfront in Doha"
+    },
+    "commercial": {
+      "badge": "Commercial Division",
+      "title": "Executive Offices & Commercial Premises",
+      "description": "Support a welcoming, hygienic environment for teams and visitors across West Bay, Lusail Marina, and Doha business hubs with flexible scheduling.",
+      "bullets": [
+        "Daily or periodic office & boardroom cleaning",
+        "Glass partition, lobby & reception detailing",
+        "Workstation, pantry & washroom sanitization",
+        "Deep cleaning & water tank maintenance"
+      ],
+      "cta": "Explore Commercial Services",
+      "imageAlt": "Spotless modern executive office and glass boardroom in Doha"
+    }
+  },
+  "areas": {
+    "eyebrow": "Service Coverage",
+    "title": "Serving Communities Across Qatar",
+    "description": "Our cleaning teams serve residential neighborhoods and business districts across Doha, Lusail, The Pearl-Qatar, West Bay, Al Wakrah, and Al Rayyan."
+  },
+  "faq": {
+    "eyebrow": "Frequently Asked Questions",
+    "title": "Helpful Answers Before You Inquire",
+    "subtitle": "Everything you need to know about arranging residential or commercial cleaning services with Vistara in Qatar.",
+    "viewAll": "View All FAQs",
+    "pageTitle": "Frequently Asked Questions",
+    "pageDescription": "Answers to common questions about our cleaning services, WhatsApp quotation process, service areas in Qatar, equipment, and scheduling.",
+    "items": [
+      {
+        "question": "How do I request a quotation or arrange a cleaning appointment?",
+        "answer": "You can message us directly using any WhatsApp button on the website or complete our Get a Quote form. Once you share your service type, property type, and location in Qatar, our team communicates with you on WhatsApp to confirm scope, pricing, and appointment timing."
+      },
+      {
+        "question": "Is my appointment confirmed immediately when I submit the form?",
+        "answer": "No. Submitting the form records your inquiry and prepares a WhatsApp message with your details. An appointment is only confirmed after our coordinator communicates with you on WhatsApp to finalize your requirements and schedule."
+      },
+      {
+        "question": "Which areas in Qatar do you cover?",
+        "answer": "We currently serve Doha, Lusail, The Pearl-Qatar, West Bay, Al Wakrah, and Al Rayyan. If your property is nearby, feel free to message us on WhatsApp to check team availability."
+      },
+      {
+        "question": "How is cleaning priced?",
+        "answer": "Quotations depend on the specific service, property size, surface conditions, and scope of work required. Sharing a brief description (and photos if helpful) on WhatsApp allows us to provide a clear, accurate quotation before scheduling."
+      },
+      {
+        "question": "Do your teams bring cleaning equipment and supplies?",
+        "answer": "Yes. Our teams arrive with suitable cleaning tools, microfiber cloths, vacuums, and specialized equipment such as upholstery extractors or steam units depending on the requested service. If you prefer specific products to be used on delicate surfaces, let us know during consultation."
+      },
+      {
+        "question": "Can I schedule commercial or residential cleaning at flexible times?",
+        "answer": "Yes. We coordinate visit timings around household routines or commercial operating hours, subject to availability confirmed during your WhatsApp discussion."
+      },
+      {
+        "question": "How should I prepare my property before the team arrives?",
+        "answer": "For general and deep cleaning, clearing personal valuables and fragile clutter helps the team work thoroughly. For specialized services like sofa, carpet, or water tank cleaning, our coordinator will let you know any simple preparation steps in advance."
+      },
+      {
+        "question": "Do you offer Arabic and English customer support on WhatsApp?",
+        "answer": "Yes, our customer communication supports both English and Arabic so you can discuss your property requirements comfortably in your preferred language."
+      }
+    ]
+  },
+  "ctaBanner": {
+    "eyebrow": "Direct Consultation",
+    "title": "Ready for a Fresher, Immaculate Space?",
+    "description": "Chat directly with our team on WhatsApp or submit a quick quotation request to discuss your villa, apartment, or office cleaning needs in Qatar.",
+    "primaryCta": "Chat on WhatsApp",
+    "secondaryCta": "Get a Quote"
+  },
+  "quoteForm": {
+    "pageTitle": "Request a Cleaning Quotation",
+    "pageDescription": "Share your cleaning requirements in Qatar. Your inquiry is saved securely and opens a prefilled WhatsApp message you can review and edit before sending.",
+    "eyebrow": "Get a Tailored Quotation",
+    "title": "Tell Us About Your Space",
+    "subtitle": "Complete the details below. After saving your inquiry, you can review and edit your personalized WhatsApp message before chatting with our coordinator.",
+    "fields": {
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Enter your full name",
+      "phone": "Phone / WhatsApp Number",
+      "phonePlaceholder": "+974 XXXX XXXX",
+      "email": "Email Address (Optional)",
+      "emailPlaceholder": "name@example.com",
+      "serviceType": "Service Type",
+      "serviceTypePlaceholder": "Select a cleaning service",
+      "propertyType": "Property Type",
+      "propertyTypePlaceholder": "Select property type",
+      "area": "Area in Qatar",
+      "areaPlaceholder": "Select your area",
+      "preferredDate": "Preferred Date",
+      "preferredTime": "Preferred Time",
+      "preferredTimePlaceholder": "Select preferred time window",
+      "message": "Additional Requirements",
+      "messagePlaceholder": "Share property size, number of rooms, special surfaces, or specific priorities..."
+    },
+    "propertyTypes": [
+      "Villa",
+      "Apartment / Penthouse",
+      "Townhouse",
+      "Majlis / Guest House",
+      "Office / Corporate Suite",
+      "Commercial / Retail Space",
+      "Other"
+    ],
+    "timeSlots": [
+      "Morning (8:00 AM – 12:00 PM)",
+      "Afternoon (12:00 PM – 4:00 PM)",
+      "Evening (4:00 PM – 8:00 PM)",
+      "Flexible / To Be Discussed"
+    ],
+    "submitButton": "Save Inquiry & Prepare WhatsApp Message",
+    "submitting": "Saving Inquiry...",
+    "disclaimer": "Submitting this form records your inquiry and prepares a WhatsApp message. It does not automatically confirm a booking; our team will coordinate and confirm your appointment directly with you.",
+    "validation": {
+      "nameMin": "Please enter your full name (at least 2 characters).",
+      "phoneInvalid": "Please enter a valid Qatar or international phone number.",
+      "emailInvalid": "Please enter a valid email address.",
+      "serviceRequired": "Please select a cleaning service.",
+      "propertyRequired": "Please select your property type.",
+      "areaRequired": "Please select your area in Qatar."
+    },
+    "success": {
+      "badge": "Inquiry Saved",
+      "title": "Your Inquiry Has Been Recorded",
+      "description": "Thank you. Your request has been saved (Reference #{id}). Please review or edit the message below and click Continue on WhatsApp to send it directly to our team. We will communicate with you to arrange your appointment.",
+      "editableLabel": "Review & Edit Your WhatsApp Message",
+      "continueButton": "Continue on WhatsApp",
+      "newInquiryButton": "Submit Another Request",
+      "autoNotice": "Note: WhatsApp messages are not sent automatically—clicking Continue on WhatsApp opens WhatsApp with your edited message ready to send."
+    },
+    "errorGeneric": "Unable to submit your inquiry right now. Please try again or contact us directly on WhatsApp."
+  },
+  "contact": {
+    "pageTitle": "Contact Us",
+    "pageDescription": "Connect with Vistara Cleaning Services in Qatar via WhatsApp or our inquiry form to discuss residential or commercial cleaning.",
+    "eyebrow": "Get in Touch",
+    "title": "We Are Here to Help Plan Your Cleaning Visit",
+    "subtitle": "WhatsApp is our fastest communication channel. Reach out directly or send your requirements through the quotation form.",
+    "whatsappCardTitle": "Chat Directly on WhatsApp",
+    "whatsappCardDesc": "Discuss your villa, apartment, majlis, or office cleaning needs directly with our coordinator.",
+    "whatsappButton": "Start WhatsApp Chat",
+    "detailsTitle": "Company Details (Editable Placeholders)",
+    "phoneLabel": "Phone / WhatsApp",
+    "emailLabel": "Email",
+    "addressLabel": "Location",
+    "hoursLabel": "Business Hours",
+    "areasLabel": "Service Areas in Qatar"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "How Vistara Cleaning Services collects, stores, and handles customer inquiry information in Qatar.",
+      "lastUpdated": "Last updated: Template Policy — Review with legal counsel before launch",
+      "sections": [
+        {
+          "heading": "1. Information We Collect",
+          "body": "When you submit a quotation or contact inquiry on our website, we collect the details you voluntarily provide, including your name, phone number, optional email address, service selection, property type, area in Qatar, preferred schedule, and any additional notes."
+        },
+        {
+          "heading": "2. How We Use Your Information",
+          "body": "We use your inquiry details solely to respond to your request, prepare a tailored cleaning quotation, and coordinate cleaning service appointments with you—primarily via WhatsApp or your provided phone number."
+        },
+        {
+          "heading": "3. Data Storage & Security",
+          "body": "Inquiry records are stored securely in our server-side PostgreSQL database. We do not sell, rent, or trade customer contact details to third parties."
+        },
+        {
+          "heading": "4. WhatsApp Communication",
+          "body": "Clicking a WhatsApp button opens a direct WhatsApp chat initiated by you. Communications within WhatsApp are subject to WhatsApp's own terms and privacy practices."
+        },
+        {
+          "heading": "5. Your Rights & Contact",
+          "body": "You may request access to, correction of, or deletion of your inquiry details by contacting us using the placeholder email or WhatsApp channel listed on our Contact page."
+        }
+      ]
+    },
+    "terms": {
+      "title": "Terms and Conditions",
+      "description": "Terms governing website use, cleaning service quotations, and appointment arrangements in Qatar.",
+      "lastUpdated": "Last updated: Template Terms — Review with legal counsel before launch",
+      "sections": [
+        {
+          "heading": "1. Quotations & Appointment Confirmation",
+          "body": "Submitting a quotation form or WhatsApp inquiry does not constitute an automatically confirmed booking. All service scopes, pricing quotations, dates, and arrival windows are finalized only after direct confirmation with our service coordinator."
+        },
+        {
+          "heading": "2. Scope of Services",
+          "body": "Services are performed in accordance with the scope agreed during consultation. Specialized surface, fabric, or water tank work may require inspection or additional disclosures regarding delicate materials."
+        },
+        {
+          "heading": "3. Access, Water & Power",
+          "body": "The client ensures safe property access, running water, and electricity during the scheduled service window, as well as secure storage of valuables and fragile items."
+        },
+        {
+          "heading": "4. Rescheduling & Cancellations",
+          "body": "If you need to reschedule or cancel an arranged visit, please notify our team via WhatsApp as early as possible so schedules can be adjusted."
+        },
+        {
+          "heading": "5. Placeholder Business Information",
+          "body": "Contact details, registration references, and hours displayed on this website include editable placeholders to be finalized by the operating company."
+        }
+      ]
+    }
+  },
+  "footer": {
+    "description": "Premium residential and commercial cleaning services serving luxury villas, apartments, and offices across Qatar.",
+    "quickLinks": "Quick Links",
+    "servicesLinks": "Popular Services",
+    "contactTitle": "Contact & Hours",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "copyright": "© {year} Vistara Cleaning Services. All rights reserved.",
+    "placeholderTag": "Editable contact placeholders"
+  },
+  "breadcrumbs": {
+    "home": "Home",
+    "services": "Services",
+    "about": "About Us",
+    "contact": "Contact Us",
+    "quote": "Get a Quote",
+    "faq": "FAQ",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions"
+  },
+  "floatingWhatsapp": {
+    "ariaLabel": "Chat with Vistara on WhatsApp",
+    "tooltip": "Chat on WhatsApp"
+  }
+}
