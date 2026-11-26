@@ -1,0 +1,1 @@
+ALTER TABLE "website_settings" ADD COLUMN "navigation_visibility" jsonb DEFAULT '{"about":true,"services":true,"residential":true,"commercial":true,"reviews":true,"faq":true,"contact":true,"quote":true}'::jsonb NOT NULL;

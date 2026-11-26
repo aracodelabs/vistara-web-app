@@ -1,9 +1,11 @@
 import React from "react";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ExternalLink, MessageSquarePlus } from "lucide-react";
 import { SITE_CONFIG } from "@/config/site";
 import { getActiveServices } from "@/lib/services";
+import { getNavigationVisibility } from "@/lib/site-settings";
 import {
   getApprovedReviewSummary,
   getApprovedTestimonials,
@@ -46,6 +48,11 @@ export default async function TestimonialsPage({
   const { locale } = await params;
   const typedLocale = locale === "ar" ? "ar" : "en";
   setRequestLocale(typedLocale);
+
+  const navVisibility = await getNavigationVisibility();
+  if (!navVisibility.reviews) {
+    notFound();
+  }
 
   const [t, bcT, initialData, summary, activeServices] = await Promise.all([
     getTranslations("testimonials"),

@@ -1,0 +1,18 @@
+import React from "react";
+import { requireAdminSession } from "@/lib/admin-auth";
+import { getAdminNotificationCounts } from "@/lib/admin-shell-data";
+import { AdminShell } from "@/components/admin/layout/AdminShell";
+import { UsersManager } from "@/components/admin/users/UsersManager";
+
+export const dynamic = "force-dynamic";
+
+export default async function AdminUsersPage() {
+  const user = await requireAdminSession("users:manage");
+  const counts = await getAdminNotificationCounts();
+
+  return (
+    <AdminShell user={user} pendingNotifications={counts}>
+      <UsersManager currentUserId={user.id} />
+    </AdminShell>
+  );
+}

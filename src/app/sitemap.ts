@@ -1,17 +1,19 @@
 import type { MetadataRoute } from "next";
 import { SITE_CONFIG } from "@/config/site";
 import { getActiveServices } from "@/lib/services";
+import { getNavigationVisibility } from "@/lib/site-settings";
 import { routing } from "@/i18n/routing";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const nav = await getNavigationVisibility();
   const staticPaths = [
     "",
-    "/about",
-    "/services",
-    "/contact",
-    "/quote",
-    "/testimonials",
-    "/faq",
+    ...(nav.about ? ["/about"] : []),
+    ...(nav.services ? ["/services"] : []),
+    ...(nav.contact ? ["/contact"] : []),
+    ...(nav.quote ? ["/quote"] : []),
+    ...(nav.reviews ? ["/testimonials"] : []),
+    ...(nav.faq ? ["/faq"] : []),
     "/privacy-policy",
     "/terms-and-conditions",
   ];

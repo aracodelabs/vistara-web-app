@@ -12,7 +12,15 @@ function getPool(): Pool {
     if (!connectionString) {
       throw new Error("DATABASE_URL environment variable is not defined.");
     }
-    cachedPool = new Pool({ connectionString });
+    cachedPool = new Pool({
+      connectionString,
+      max: 5,
+      idleTimeoutMillis: 15000,
+      connectionTimeoutMillis: 15000,
+    });
+    cachedPool.on("error", (err) => {
+      console.error("Unexpected PostgreSQL pool error:", err.message);
+    });
     attachDatabasePool(cachedPool);
   }
   return cachedPool;

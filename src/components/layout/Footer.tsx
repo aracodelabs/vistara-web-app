@@ -9,8 +9,16 @@ import {
   buildWhatsAppUrl,
 } from "@/config/site";
 import { WhatsAppIcon } from "@/components/whatsapp/WhatsAppIcon";
+import {
+  DEFAULT_NAVIGATION_VISIBILITY,
+  type NavigationVisibility,
+} from "@/lib/navigation-visibility";
 
-export async function Footer() {
+export async function Footer({
+  navVisibility = DEFAULT_NAVIGATION_VISIBILITY,
+}: {
+  navVisibility?: NavigationVisibility;
+}) {
   const locale = (await getLocale()) as "en" | "ar";
   const t = await getTranslations("footer");
   const navT = await getTranslations("nav");
@@ -96,54 +104,66 @@ export async function Footer() {
                   {navT("home")}
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="transition-colors hover:text-white"
-                >
-                  {navT("about")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/services"
-                  className="transition-colors hover:text-white"
-                >
-                  {navT("allServices")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/quote"
-                  className="transition-colors hover:text-white"
-                >
-                  {navT("quote")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/testimonials"
-                  className="transition-colors hover:text-white"
-                >
-                  {navT("testimonials")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/faq"
-                  className="transition-colors hover:text-white"
-                >
-                  {navT("faq")}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="transition-colors hover:text-white"
-                >
-                  {navT("contact")}
-                </Link>
-              </li>
+              {navVisibility.about && (
+                <li>
+                  <Link
+                    href="/about"
+                    className="transition-colors hover:text-white"
+                  >
+                    {navT("about")}
+                  </Link>
+                </li>
+              )}
+              {navVisibility.services && (
+                <li>
+                  <Link
+                    href="/services"
+                    className="transition-colors hover:text-white"
+                  >
+                    {navT("allServices")}
+                  </Link>
+                </li>
+              )}
+              {navVisibility.quote && (
+                <li>
+                  <Link
+                    href="/quote"
+                    className="transition-colors hover:text-white"
+                  >
+                    {navT("quote")}
+                  </Link>
+                </li>
+              )}
+              {navVisibility.reviews && (
+                <li>
+                  <Link
+                    href="/testimonials"
+                    className="transition-colors hover:text-white"
+                  >
+                    {navT("testimonials")}
+                  </Link>
+                </li>
+              )}
+              {navVisibility.faq && (
+                <li>
+                  <Link
+                    href="/faq"
+                    className="transition-colors hover:text-white"
+                  >
+                    {navT("faq")}
+                  </Link>
+                </li>
+              )}
+              {navVisibility.contact && (
+                <li>
+                  <Link
+                    href="/contact"
+                    className="transition-colors hover:text-white"
+                  >
+                    {navT("contact")}
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
 

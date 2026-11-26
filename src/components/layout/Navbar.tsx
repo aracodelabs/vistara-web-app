@@ -11,6 +11,10 @@ import {
   buildWhatsAppUrl,
 } from "@/config/site";
 import { WhatsAppIcon } from "@/components/whatsapp/WhatsAppIcon";
+import {
+  DEFAULT_NAVIGATION_VISIBILITY,
+  type NavigationVisibility,
+} from "@/lib/navigation-visibility";
 import { cn } from "@/lib/utils";
 
 interface NavServiceLink {
@@ -20,7 +24,13 @@ interface NavServiceLink {
   category: string;
 }
 
-export function Navbar({ services }: { services: NavServiceLink[] }) {
+export function Navbar({
+  services,
+  navVisibility = DEFAULT_NAVIGATION_VISIBILITY,
+}: {
+  services: NavServiceLink[];
+  navVisibility?: NavigationVisibility;
+}) {
   const t = useTranslations("nav");
   const locale = useLocale() as "en" | "ar";
   const pathname = usePathname();
@@ -101,96 +111,108 @@ export function Navbar({ services }: { services: NavServiceLink[] }) {
           <Link href="/" className={navLinkClass(pathname === "/")}>
             {t("home")}
           </Link>
-          <Link href="/about" className={navLinkClass(pathname === "/about")}>
-            {t("about")}
-          </Link>
+          {navVisibility.about && (
+            <Link href="/about" className={navLinkClass(pathname === "/about")}>
+              {t("about")}
+            </Link>
+          )}
 
           {/* Services Dropdown */}
-          <div
-            ref={dropdownRef}
-            className="relative shrink-0"
-            onMouseEnter={() => setDropdownOpen(true)}
-            onMouseLeave={() => setDropdownOpen(false)}
-          >
-            <button
-              type="button"
-              aria-expanded={dropdownOpen}
-              aria-haspopup="true"
-              onClick={() => setDropdownOpen((prev) => !prev)}
-              className={cn(
-                navLinkClass(pathname.startsWith("/services")),
-                "gap-1 cursor-pointer"
-              )}
+          {navVisibility.services && (
+            <div
+              ref={dropdownRef}
+              className="relative shrink-0"
+              onMouseEnter={() => setDropdownOpen(true)}
+              onMouseLeave={() => setDropdownOpen(false)}
             >
-              <span>{t("services")}</span>
-              <ChevronDown
+              <button
+                type="button"
+                aria-expanded={dropdownOpen}
+                aria-haspopup="true"
+                onClick={() => setDropdownOpen((prev) => !prev)}
                 className={cn(
-                  "h-3.5 w-3.5 shrink-0 transition-transform duration-200",
-                  dropdownOpen && "rotate-180"
+                  navLinkClass(pathname.startsWith("/services")),
+                  "gap-1 cursor-pointer"
                 )}
-              />
-            </button>
+              >
+                <span>{t("services")}</span>
+                <ChevronDown
+                  className={cn(
+                    "h-3.5 w-3.5 shrink-0 transition-transform duration-200",
+                    dropdownOpen && "rotate-180"
+                  )}
+                />
+              </button>
 
-            {dropdownOpen && (
-              <div className="absolute start-0 top-full w-[520px] pt-2">
-                <div className="rounded-2xl border border-[#013220]/12 bg-white p-5 shadow-xl shadow-[#013220]/10">
-                  <div className="mb-3 flex items-center justify-between border-b border-[#013220]/10 pb-3">
-                    <Link
-                      href="/services"
-                      onClick={() => setDropdownOpen(false)}
-                      className="text-sm font-semibold text-[#013220] hover:text-[#014421] hover:underline"
-                    >
-                      {t("allServices")}
-                    </Link>
-                    <span className="rounded-full bg-[#E8F0E8] px-2.5 py-0.5 text-xs font-medium text-[#014421]">
-                      {services.length}
-                    </span>
-                  </div>
-                  <div className="grid grid-cols-2 gap-1.5">
-                    {services.map((svc) => (
+              {dropdownOpen && (
+                <div className="absolute start-0 top-full w-[520px] pt-2">
+                  <div className="rounded-2xl border border-[#013220]/12 bg-white p-5 shadow-xl shadow-[#013220]/10">
+                    <div className="mb-3 flex items-center justify-between border-b border-[#013220]/10 pb-3">
                       <Link
-                        key={svc.slug}
-                        href={`/services/${svc.slug}`}
+                        href="/services"
                         onClick={() => setDropdownOpen(false)}
-                        className="rounded-lg px-3 py-2 text-sm text-[#1B1F1C] transition-colors hover:bg-[#F7F8F4] hover:text-[#014421]"
+                        className="text-sm font-semibold text-[#013220] hover:text-[#014421] hover:underline"
                       >
-                        {locale === "ar" ? svc.title_ar : svc.title_en}
+                        {t("allServices")}
                       </Link>
-                    ))}
+                      <span className="rounded-full bg-[#E8F0E8] px-2.5 py-0.5 text-xs font-medium text-[#014421]">
+                        {services.length}
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-1.5">
+                      {services.map((svc) => (
+                        <Link
+                          key={svc.slug}
+                          href={`/services/${svc.slug}`}
+                          onClick={() => setDropdownOpen(false)}
+                          className="rounded-lg px-3 py-2 text-sm text-[#1B1F1C] transition-colors hover:bg-[#F7F8F4] hover:text-[#014421]"
+                        >
+                          {locale === "ar" ? svc.title_ar : svc.title_en}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
 
-          <Link
-            href="/services/residential-cleaning"
-            className={navLinkClass(
-              pathname === "/services/residential-cleaning"
-            )}
-          >
-            {t("residential")}
-          </Link>
-          <Link
-            href="/services/commercial-cleaning"
-            className={navLinkClass(
-              pathname === "/services/commercial-cleaning"
-            )}
-          >
-            {t("commercial")}
-          </Link>
-          <Link
-            href="/testimonials"
-            className={navLinkClass(pathname === "/testimonials")}
-          >
-            {t("testimonials")}
-          </Link>
-          <Link
-            href="/contact"
-            className={navLinkClass(pathname === "/contact")}
-          >
-            {t("contact")}
-          </Link>
+          {navVisibility.residential && (
+            <Link
+              href="/services/residential-cleaning"
+              className={navLinkClass(
+                pathname === "/services/residential-cleaning"
+              )}
+            >
+              {t("residential")}
+            </Link>
+          )}
+          {navVisibility.commercial && (
+            <Link
+              href="/services/commercial-cleaning"
+              className={navLinkClass(
+                pathname === "/services/commercial-cleaning"
+              )}
+            >
+              {t("commercial")}
+            </Link>
+          )}
+          {navVisibility.reviews && (
+            <Link
+              href="/testimonials"
+              className={navLinkClass(pathname === "/testimonials")}
+            >
+              {t("testimonials")}
+            </Link>
+          )}
+          {navVisibility.contact && (
+            <Link
+              href="/contact"
+              className={navLinkClass(pathname === "/contact")}
+            >
+              {t("contact")}
+            </Link>
+          )}
         </nav>
 
         {/* Actions */}
@@ -222,12 +244,14 @@ export function Navbar({ services }: { services: NavServiceLink[] }) {
             <span className="hidden 2xl:inline">{t("whatsapp")}</span>
           </a>
 
-          <Link
-            href="/quote"
-            className="hidden h-9 shrink-0 items-center whitespace-nowrap rounded-full bg-[#014421] px-4 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-[#013220] md:inline-flex xl:h-10 xl:px-5 xl:text-sm"
-          >
-            {t("quote")}
-          </Link>
+          {navVisibility.quote && (
+            <Link
+              href="/quote"
+              className="hidden h-9 shrink-0 items-center whitespace-nowrap rounded-full bg-[#014421] px-4 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-[#013220] md:inline-flex xl:h-10 xl:px-5 xl:text-sm"
+            >
+              {t("quote")}
+            </Link>
+          )}
 
           <button
             type="button"
@@ -255,96 +279,112 @@ export function Navbar({ services }: { services: NavServiceLink[] }) {
             >
               {t("home")}
             </Link>
-            <Link
-              href="/about"
-              onClick={() => setMobileOpen(false)}
-              className="rounded-xl px-4 py-3 text-base font-medium text-[#1B1F1C] hover:bg-[#F7F8F4] hover:text-[#013220]"
-            >
-              {t("about")}
-            </Link>
-
-            <div>
-              <button
-                type="button"
-                aria-expanded={mobileServicesOpen}
-                onClick={() => setMobileServicesOpen((prev) => !prev)}
-                className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-[#1B1F1C] hover:bg-[#F7F8F4] hover:text-[#013220] cursor-pointer"
+            {navVisibility.about && (
+              <Link
+                href="/about"
+                onClick={() => setMobileOpen(false)}
+                className="rounded-xl px-4 py-3 text-base font-medium text-[#1B1F1C] hover:bg-[#F7F8F4] hover:text-[#013220]"
               >
-                <span>{t("services")}</span>
-                <ChevronDown
-                  className={cn(
-                    "h-4 w-4 transition-transform",
-                    mobileServicesOpen && "rotate-180"
-                  )}
-                />
-              </button>
-              {mobileServicesOpen && (
-                <div className="ms-4 mt-1 flex flex-col gap-1 border-s border-[#013220]/15 ps-3">
-                  <Link
-                    href="/services"
-                    onClick={() => setMobileOpen(false)}
-                    className="rounded-lg px-3 py-2 text-sm font-semibold text-[#014421] hover:bg-[#F7F8F4]"
-                  >
-                    {t("allServices")}
-                  </Link>
-                  {services.map((svc) => (
-                    <Link
-                      key={svc.slug}
-                      href={`/services/${svc.slug}`}
-                      onClick={() => setMobileOpen(false)}
-                      className="rounded-lg px-3 py-2 text-sm text-[#1B1F1C] hover:bg-[#F7F8F4]"
-                    >
-                      {locale === "ar" ? svc.title_ar : svc.title_en}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+                {t("about")}
+              </Link>
+            )}
 
-            <Link
-              href="/services/residential-cleaning"
-              onClick={() => setMobileOpen(false)}
-              className="rounded-xl px-4 py-3 text-base font-medium text-[#1B1F1C] hover:bg-[#F7F8F4] hover:text-[#013220]"
-            >
-              {t("residential")}
-            </Link>
-            <Link
-              href="/services/commercial-cleaning"
-              onClick={() => setMobileOpen(false)}
-              className="rounded-xl px-4 py-3 text-base font-medium text-[#1B1F1C] hover:bg-[#F7F8F4] hover:text-[#013220]"
-            >
-              {t("commercial")}
-            </Link>
-            <Link
-              href="/testimonials"
-              onClick={() => setMobileOpen(false)}
-              className="rounded-xl px-4 py-3 text-base font-medium text-[#1B1F1C] hover:bg-[#F7F8F4] hover:text-[#013220]"
-            >
-              {t("testimonials")}
-            </Link>
-            <Link
-              href="/faq"
-              onClick={() => setMobileOpen(false)}
-              className="rounded-xl px-4 py-3 text-base font-medium text-[#1B1F1C] hover:bg-[#F7F8F4] hover:text-[#013220]"
-            >
-              {t("faq")}
-            </Link>
-            <Link
-              href="/contact"
-              onClick={() => setMobileOpen(false)}
-              className="rounded-xl px-4 py-3 text-base font-medium text-[#1B1F1C] hover:bg-[#F7F8F4] hover:text-[#013220]"
-            >
-              {t("contact")}
-            </Link>
+            {navVisibility.services && (
+              <div>
+                <button
+                  type="button"
+                  aria-expanded={mobileServicesOpen}
+                  onClick={() => setMobileServicesOpen((prev) => !prev)}
+                  className="flex w-full items-center justify-between rounded-xl px-4 py-3 text-base font-medium text-[#1B1F1C] hover:bg-[#F7F8F4] hover:text-[#013220] cursor-pointer"
+                >
+                  <span>{t("services")}</span>
+                  <ChevronDown
+                    className={cn(
+                      "h-4 w-4 transition-transform",
+                      mobileServicesOpen && "rotate-180"
+                    )}
+                  />
+                </button>
+                {mobileServicesOpen && (
+                  <div className="ms-4 mt-1 flex flex-col gap-1 border-s border-[#013220]/15 ps-3">
+                    <Link
+                      href="/services"
+                      onClick={() => setMobileOpen(false)}
+                      className="rounded-lg px-3 py-2 text-sm font-semibold text-[#014421] hover:bg-[#F7F8F4]"
+                    >
+                      {t("allServices")}
+                    </Link>
+                    {services.map((svc) => (
+                      <Link
+                        key={svc.slug}
+                        href={`/services/${svc.slug}`}
+                        onClick={() => setMobileOpen(false)}
+                        className="rounded-lg px-3 py-2 text-sm text-[#1B1F1C] hover:bg-[#F7F8F4]"
+                      >
+                        {locale === "ar" ? svc.title_ar : svc.title_en}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {navVisibility.residential && (
+              <Link
+                href="/services/residential-cleaning"
+                onClick={() => setMobileOpen(false)}
+                className="rounded-xl px-4 py-3 text-base font-medium text-[#1B1F1C] hover:bg-[#F7F8F4] hover:text-[#013220]"
+              >
+                {t("residential")}
+              </Link>
+            )}
+            {navVisibility.commercial && (
+              <Link
+                href="/services/commercial-cleaning"
+                onClick={() => setMobileOpen(false)}
+                className="rounded-xl px-4 py-3 text-base font-medium text-[#1B1F1C] hover:bg-[#F7F8F4] hover:text-[#013220]"
+              >
+                {t("commercial")}
+              </Link>
+            )}
+            {navVisibility.reviews && (
+              <Link
+                href="/testimonials"
+                onClick={() => setMobileOpen(false)}
+                className="rounded-xl px-4 py-3 text-base font-medium text-[#1B1F1C] hover:bg-[#F7F8F4] hover:text-[#013220]"
+              >
+                {t("testimonials")}
+              </Link>
+            )}
+            {navVisibility.faq && (
+              <Link
+                href="/faq"
+                onClick={() => setMobileOpen(false)}
+                className="rounded-xl px-4 py-3 text-base font-medium text-[#1B1F1C] hover:bg-[#F7F8F4] hover:text-[#013220]"
+              >
+                {t("faq")}
+              </Link>
+            )}
+            {navVisibility.contact && (
+              <Link
+                href="/contact"
+                onClick={() => setMobileOpen(false)}
+                className="rounded-xl px-4 py-3 text-base font-medium text-[#1B1F1C] hover:bg-[#F7F8F4] hover:text-[#013220]"
+              >
+                {t("contact")}
+              </Link>
+            )}
 
             <div className="mt-3 grid grid-cols-1 gap-2.5 border-t border-[#013220]/10 pt-4 sm:grid-cols-2">
-              <Link
-                href="/quote"
-                onClick={() => setMobileOpen(false)}
-                className="inline-flex h-11 items-center justify-center rounded-full bg-[#014421] px-5 text-sm font-semibold text-white hover:bg-[#013220]"
-              >
-                {t("quote")}
-              </Link>
+              {navVisibility.quote && (
+                <Link
+                  href="/quote"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex h-11 items-center justify-center rounded-full bg-[#014421] px-5 text-sm font-semibold text-white hover:bg-[#013220]"
+                >
+                  {t("quote")}
+                </Link>
+              )}
               <a
                 href={whatsappHref}
                 target="_blank"

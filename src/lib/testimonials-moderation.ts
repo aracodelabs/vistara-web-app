@@ -8,7 +8,7 @@ if (typeof window !== "undefined") {
 
 export interface ModerationActor {
   adminId: string;
-  role: "admin" | "moderator";
+  role: "SUPER_ADMIN" | "ADMIN" | "EDITOR" | "admin" | "moderator";
 }
 
 export type ModerationQueueStatus = "pending" | "approved" | "all";
@@ -29,12 +29,20 @@ export interface ModerationQueueItem {
   createdAt: Date;
 }
 
+const ALLOWED_MODERATION_ROLES = new Set([
+  "SUPER_ADMIN",
+  "ADMIN",
+  "EDITOR",
+  "admin",
+  "moderator",
+]);
+
 export function assertModerationActor(actor: ModerationActor): void {
   if (
     !actor ||
     typeof actor.adminId !== "string" ||
     actor.adminId.trim().length === 0 ||
-    (actor.role !== "admin" && actor.role !== "moderator")
+    !ALLOWED_MODERATION_ROLES.has(actor.role)
   ) {
     throw new Error("Unauthorized moderation actor.");
   }
@@ -132,6 +140,28 @@ export async function setTestimonialVerified(
   const [updated] = await db
     .update(testimonials)
     .set({ is_verified: isVerified })
+    .where(eq(testimonials.id, testimonialId))
+    .returning();
+
+  return updated ?? null;
+}
+
+export async function editTestimonial(
+  actor: ModerationActor,
+  testimonialId: number,
+  updates: {
+    customer_name?: string;
+    location?: string | null;
+    rating?: number;
+    review?: string;
+  }
+): Promise<TestimonialRecord | null> {
+  assertModerationActor(actor);
+  const db = getDb();
+
+  const [updated] = await db
+    .update(testimonials)
+    .set(updates)
     .where(eq(testimonials.id, testimonialId))
     .returning();
 

@@ -11,6 +11,7 @@ import {
 import { routing } from "@/i18n/routing";
 import { SITE_CONFIG } from "@/config/site";
 import { getActiveServices } from "@/lib/services";
+import { getNavigationVisibility } from "@/lib/site-settings";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingWhatsApp } from "@/components/whatsapp/FloatingWhatsApp";
@@ -75,9 +76,10 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
 
-  const [messages, activeServices] = await Promise.all([
+  const [messages, activeServices, navVisibility] = await Promise.all([
     getMessages(),
     getActiveServices(),
+    getNavigationVisibility(),
   ]);
 
   const isAr = locale === "ar";
@@ -134,11 +136,11 @@ export default async function LocaleLayout({
           >
             {isAr ? "تجاوز إلى المحتوى الرئيسي" : "Skip to main content"}
           </a>
-          <Navbar services={navServices} />
+          <Navbar services={navServices} navVisibility={navVisibility} />
           <main id="main-content" className="flex-1">
             {children}
           </main>
-          <Footer />
+          <Footer navVisibility={navVisibility} />
           <FloatingWhatsApp />
         </NextIntlClientProvider>
       </body>
