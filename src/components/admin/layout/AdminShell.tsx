@@ -182,123 +182,122 @@ export function AdminShell({
     }
   }
 
-  const sidebarContent = (isMobile: boolean) => (
-    <div className="flex h-full flex-col bg-[#013220] text-white">
-      <div className="flex h-16 items-center justify-between border-b border-white/10 px-4">
-        <Link
-          href="/admin"
-          onClick={() => isMobile && setMobileOpen(false)}
-          className="flex items-center gap-2.5 overflow-hidden"
+  const sidebarContent = (isMobile: boolean) => {
+    const isCollapsed = sidebarCollapsed && !isMobile;
+
+    return (
+      <div className="flex h-full flex-col bg-[#013220] text-white">
+        <div
+          className={`flex h-16 items-center border-b border-white/10 ${
+            isCollapsed ? "justify-center px-2" : "justify-between px-4"
+          }`}
         >
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white p-1.5 shadow-xs">
-            <Image
-              src="/images/vistara-logo.png"
-              alt="Vistara"
-              width={28}
-              height={28}
-              className="h-full w-full object-contain"
-            />
-          </div>
-          {(!sidebarCollapsed || isMobile) && (
-            <div className="min-w-0">
-              <p className="truncate text-sm font-bold tracking-tight text-white">
-                Vistara Admin
-              </p>
-              <p className="truncate text-[11px] text-white/65">
-                Qatar Operations
-              </p>
-            </div>
-          )}
-        </Link>
-
-        {isMobile ? (
-          <button
-            type="button"
-            onClick={() => setMobileOpen(false)}
-            className="rounded-lg p-1.5 text-white/75 hover:bg-white/10 hover:text-white"
-            aria-label="Close navigation menu"
+          <Link
+            href="/admin"
+            onClick={() => isMobile && setMobileOpen(false)}
+            title={isCollapsed ? "Vistara Admin" : undefined}
+            className="flex items-center gap-2.5 overflow-hidden"
           >
-            <X className="h-5 w-5" />
-          </button>
-        ) : (
-          <button
-            type="button"
-            onClick={() => setSidebarCollapsed((prev) => !prev)}
-            className="hidden rounded-lg p-1.5 text-white/70 hover:bg-white/10 hover:text-white lg:inline-flex"
-            aria-label={
-              sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"
-            }
-          >
-            {sidebarCollapsed ? (
-              <PanelLeftOpen className="h-4 w-4" />
-            ) : (
-              <PanelLeftClose className="h-4 w-4" />
-            )}
-          </button>
-        )}
-      </div>
-
-      <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-4">
-        {visibleNav.map((item) => {
-          const Icon = item.icon;
-          const active =
-            item.href === "/admin"
-              ? pathname === "/admin"
-              : pathname.startsWith(item.href);
-
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => isMobile && setMobileOpen(false)}
-              title={sidebarCollapsed && !isMobile ? item.label : undefined}
-              className={`group flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors ${
-                active
-                  ? "bg-white text-[#013220] shadow-xs"
-                  : "text-white/80 hover:bg-white/10 hover:text-white"
-              }`}
-            >
-              <Icon
-                className={`h-4 w-4 shrink-0 ${
-                  active ? "text-[#014421]" : "text-white/70 group-hover:text-white"
-                }`}
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white p-1.5 shadow-xs">
+              <Image
+                src="/images/vistara-logo.png"
+                alt="Vistara"
+                width={28}
+                height={28}
+                className="h-full w-full object-contain"
               />
-              {(!sidebarCollapsed || isMobile) && (
-                <>
-                  <span className="flex-1 truncate">{item.label}</span>
-                  {typeof item.badge === "number" && item.badge > 0 && (
-                    <span
-                      className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${
-                        active
-                          ? "bg-[#E8F0E8] text-[#013220]"
-                          : "bg-[#6BAE00] text-[#013220]"
-                      }`}
-                    >
-                      {item.badge}
-                    </span>
-                  )}
-                </>
-              )}
-            </Link>
-          );
-        })}
-      </nav>
+            </div>
+            {!isCollapsed && (
+              <div className="min-w-0">
+                <p className="truncate text-sm font-bold tracking-tight text-white">
+                  Vistara Admin
+                </p>
+                <p className="truncate text-[11px] text-white/65">
+                  Qatar Operations
+                </p>
+              </div>
+            )}
+          </Link>
 
-      <div className="border-t border-white/10 p-3">
-        <Link
-          href="/en"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-medium text-white/75 transition hover:bg-white/10 hover:text-white"
-        >
-          <ExternalLink className="h-4 w-4 shrink-0" />
-          {(!sidebarCollapsed || isMobile) && (
-            <span className="truncate">View Public Website</span>
+          {isMobile && (
+            <button
+              type="button"
+              onClick={() => setMobileOpen(false)}
+              className="rounded-lg p-1.5 text-white/75 hover:bg-white/10 hover:text-white"
+              aria-label="Close navigation menu"
+            >
+              <X className="h-5 w-5" />
+            </button>
           )}
-        </Link>
+        </div>
+
+        <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+          {visibleNav.map((item) => {
+            const Icon = item.icon;
+            const active =
+              item.href === "/admin"
+                ? pathname === "/admin"
+                : pathname.startsWith(item.href);
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={() => isMobile && setMobileOpen(false)}
+                title={isCollapsed ? item.label : undefined}
+                className={`group flex items-center gap-3 rounded-xl py-2.5 text-sm font-medium transition-colors ${
+                  isCollapsed ? "justify-center px-0" : "px-3"
+                } ${
+                  active
+                    ? "bg-white text-[#013220] shadow-xs"
+                    : "text-white/80 hover:bg-white/10 hover:text-white"
+                }`}
+              >
+                <Icon
+                  className={`h-4 w-4 shrink-0 ${
+                    active ? "text-[#014421]" : "text-white/70 group-hover:text-white"
+                  }`}
+                />
+                {!isCollapsed && (
+                  <>
+                    <span className="flex-1 truncate">{item.label}</span>
+                    {typeof item.badge === "number" && item.badge > 0 && (
+                      <span
+                        className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${
+                          active
+                            ? "bg-[#E8F0E8] text-[#013220]"
+                            : "bg-[#6BAE00] text-[#013220]"
+                        }`}
+                      >
+                        {item.badge}
+                      </span>
+                    )}
+                  </>
+                )}
+              </Link>
+            );
+          })}
+        </nav>
+
+        <div className="border-t border-white/10 p-3">
+          <Link
+            href="/en"
+            target="_blank"
+            rel="noopener noreferrer"
+            title={isCollapsed ? "View Public Website" : undefined}
+            className={`flex items-center gap-2.5 rounded-xl py-2 text-xs font-medium text-white/75 transition hover:bg-white/10 hover:text-white ${
+              isCollapsed ? "justify-center px-0" : "px-3"
+            }`}
+          >
+            <ExternalLink className="h-4 w-4 shrink-0" />
+            {!isCollapsed && (
+              <span className="truncate">View Public Website</span>
+            )}
+          </Link>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <div className="flex min-h-screen bg-[#F7F8F4] text-[#1B1F1C]">
@@ -335,6 +334,22 @@ export function AdminShell({
               aria-label="Open navigation menu"
             >
               <Menu className="h-5 w-5" />
+            </button>
+
+            <button
+              type="button"
+              onClick={() => setSidebarCollapsed((prev) => !prev)}
+              className="hidden h-9 w-9 items-center justify-center rounded-xl border border-[#013220]/10 bg-[#F7F8F4] text-[#013220] transition hover:bg-[#E8F0E8] lg:inline-flex"
+              aria-label={
+                sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"
+              }
+              title={sidebarCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+            >
+              {sidebarCollapsed ? (
+                <PanelLeftOpen className="h-4 w-4" />
+              ) : (
+                <PanelLeftClose className="h-4 w-4" />
+              )}
             </button>
 
             <div className="min-w-0">
