@@ -15,15 +15,23 @@ export default async function AdminLoginPage({
     redirect("/admin");
   }
 
-  const [hasAdmin, params] = await Promise.all([
-    hasAnyAdminUser(),
-    searchParams,
-  ]);
+  let hasAdmin = false;
+  let dbError: string | null = null;
+  try {
+    hasAdmin = await hasAnyAdminUser();
+  } catch (err) {
+    console.error("Admin login DB check error:", err);
+    dbError =
+      "Database connection is not configured or unreachable on this server. Add DATABASE_URL in Vercel Project Settings and redeploy.";
+  }
+
+  const params = await searchParams;
 
   return (
     <AdminLoginForm
-      needsSetup={!hasAdmin}
+      needsSetup={!dbError && !hasAdmin}
       resetSuccess={params?.reset === "success"}
+      dbError={dbError}
     />
   );
 }

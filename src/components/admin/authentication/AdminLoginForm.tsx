@@ -19,9 +19,11 @@ import { useAdminToast } from "@/components/admin/shared/AdminToastProvider";
 export function AdminLoginForm({
   needsSetup,
   resetSuccess = false,
+  dbError = null,
 }: {
   needsSetup: boolean;
   resetSuccess?: boolean;
+  dbError?: string | null;
 }) {
   const router = useRouter();
   const toast = useAdminToast();
@@ -107,6 +109,12 @@ export function AdminLoginForm({
               Your password has been updated and previous sessions were revoked.
               Sign in with your new password.
             </span>
+          </div>
+        )}
+
+        {dbError && (
+          <div className="mt-5 rounded-xl border border-amber-300 bg-amber-50 p-3.5 text-sm text-amber-900">
+            {dbError}
           </div>
         )}
 
