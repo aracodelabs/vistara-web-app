@@ -52,3 +52,46 @@ export function createInquirySchema(
 }
 
 export type InquiryFormValues = z.infer<ReturnType<typeof createInquirySchema>>;
+
+export interface TestimonialValidationMessages {
+  nameMin: string;
+  serviceRequired: string;
+  ratingRequired: string;
+  reviewMin: string;
+  reviewMax: string;
+}
+
+export const DEFAULT_TESTIMONIAL_VALIDATION_MESSAGES: TestimonialValidationMessages =
+  {
+    nameMin: "Please enter your name (at least 2 characters).",
+    serviceRequired: "Please select the cleaning service you received.",
+    ratingRequired: "Please select a star rating between 1 and 5.",
+    reviewMin: "Please share at least 15 characters about your experience.",
+    reviewMax: "Review description cannot exceed 1,500 characters.",
+  };
+
+export function createTestimonialSchema(
+  messages: TestimonialValidationMessages = DEFAULT_TESTIMONIAL_VALIDATION_MESSAGES
+) {
+  return z.object({
+    customerName: z.string().trim().min(2, messages.nameMin).max(160),
+    location: z.string().trim().max(120).optional().or(z.literal("")),
+    serviceSlug: z.string().trim().min(1, messages.serviceRequired).max(120),
+    rating: z
+      .number({ message: messages.ratingRequired })
+      .int(messages.ratingRequired)
+      .min(1, messages.ratingRequired)
+      .max(5, messages.ratingRequired),
+    review: z
+      .string()
+      .trim()
+      .min(15, messages.reviewMin)
+      .max(1500, messages.reviewMax),
+    language: z.enum(["en", "ar"]),
+    website: z.string().max(100).optional().or(z.literal("")),
+  });
+}
+
+export type TestimonialFormValues = z.infer<
+  ReturnType<typeof createTestimonialSchema>
+>;

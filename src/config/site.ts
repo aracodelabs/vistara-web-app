@@ -40,6 +40,7 @@ export const SITE_CONFIG = {
     facebook: "https://facebook.com/vistara-placeholder",
     linkedin: "https://linkedin.com/company/vistara-placeholder",
   },
+  googleReviewUrl: (process.env.NEXT_PUBLIC_GOOGLE_REVIEW_URL || "").trim(),
   serviceAreas: [
     { slug: "doha", en: "Doha", ar: "الدوحة" },
     { slug: "lusail", en: "Lusail", ar: "لوسيل" },

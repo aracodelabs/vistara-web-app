@@ -7,8 +7,10 @@ import {
   integer,
   timestamp,
   pgEnum,
+  index,
+  check,
 } from "drizzle-orm/pg-core";
-import { relations } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 
 export const inquiryStatusEnum = pgEnum("inquiry_status", [
   "New",
@@ -66,6 +68,35 @@ export const inquiries = pgTable("inquiries", {
   created_at: timestamp("created_at").defaultNow().notNull(),
 });
 
+export const testimonials = pgTable(
+  "testimonials",
+  {
+    id: serial("id").primaryKey(),
+    customer_name: varchar("customer_name", { length: 160 }).notNull(),
+    location: varchar("location", { length: 120 }),
+    service_id: integer("service_id").references(() => services.id, {
+      onDelete: "set null",
+    }),
+    rating: integer("rating").notNull(),
+    review: text("review").notNull(),
+    language: varchar("language", { length: 10 }).notNull().default("en"),
+    is_verified: boolean("is_verified").notNull().default(false),
+    is_approved: boolean("is_approved").notNull().default(false),
+    created_at: timestamp("created_at").defaultNow().notNull(),
+  },
+  (table) => [
+    check(
+      "testimonials_rating_range",
+      sql`${table.rating} >= 1 AND ${table.rating} <= 5`
+    ),
+    index("testimonials_approved_created_idx").on(
+      table.is_approved,
+      table.created_at
+    ),
+    index("testimonials_service_idx").on(table.service_id),
+  ]
+);
+
 export const serviceCategoriesRelations = relations(
   serviceCategories,
   ({ many }) => ({
@@ -79,6 +110,7 @@ export const servicesRelations = relations(services, ({ one, many }) => ({
     references: [serviceCategories.id],
   }),
   inquiries: many(inquiries),
+  testimonials: many(testimonials),
 }));
 
 export const inquiriesRelations = relations(inquiries, ({ one }) => ({
@@ -88,6 +120,15 @@ export const inquiriesRelations = relations(inquiries, ({ one }) => ({
   }),
 }));
 
+export const testimonialsRelations = relations(testimonials, ({ one }) => ({
+  service: one(services, {
+    fields: [testimonials.service_id],
+    references: [services.id],
+  }),
+}));
+
 export type ServiceCategory = typeof serviceCategories.$inferSelect;
 export type ServiceRecord = typeof services.$inferSelect;
 export type InquiryRecord = typeof inquiries.$inferSelect;
+export type TestimonialRecord = typeof testimonials.$inferSelect;
+export type NewTestimonialRecord = typeof testimonials.$inferInsert;

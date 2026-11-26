@@ -122,6 +122,14 @@ export async function Footer() {
               </li>
               <li>
                 <Link
+                  href="/testimonials"
+                  className="transition-colors hover:text-white"
+                >
+                  {navT("testimonials")}
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/faq"
                   className="transition-colors hover:text-white"
                 >

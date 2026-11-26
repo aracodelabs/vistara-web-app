@@ -64,9 +64,18 @@ export function Navbar({ services }: { services: NavServiceLink[] }) {
     router.replace(pathname, { locale: nextLocale });
   }
 
+  function navLinkClass(active: boolean) {
+    return cn(
+      "relative inline-flex shrink-0 items-center whitespace-nowrap py-2 text-[13px] font-medium transition-colors xl:text-sm",
+      active
+        ? "font-semibold text-[#013220] after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-[#6BAE00]"
+        : "text-[#1B1F1C]/80 hover:text-[#013220]"
+    );
+  }
+
   return (
-    <header className="sticky top-0 z-50 border-b border-[#013220]/10 bg-white/95 backdrop-blur-md">
-      <div className="mx-auto flex h-18 max-w-7xl items-center justify-between gap-3 px-4 sm:px-6 lg:px-8">
+    <header className="sticky top-0 z-50 border-b border-[#013220]/10 bg-white/90 shadow-[0_1px_12px_rgba(1,50,32,0.04)] backdrop-blur-md">
+      <div className="mx-auto flex h-20 max-w-[1360px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         {/* Brand Logo */}
         <Link
           href="/"
@@ -80,42 +89,26 @@ export function Navbar({ services }: { services: NavServiceLink[] }) {
             width={140}
             height={84}
             priority
-            className="h-11 w-auto object-contain sm:h-12"
+            className="h-10 w-auto object-contain xl:h-11"
           />
         </Link>
 
         {/* Desktop Navigation */}
         <nav
           aria-label={locale === "ar" ? "التنقل الرئيسي" : "Main navigation"}
-          className="hidden items-center gap-1 lg:flex"
+          className="hidden items-center gap-4 lg:flex xl:gap-6"
         >
-          <Link
-            href="/"
-            className={cn(
-              "rounded-full px-3.5 py-2 text-sm font-medium transition-colors hover:bg-[#E8F0E8] hover:text-[#013220]",
-              pathname === "/"
-                ? "bg-[#E8F0E8] text-[#013220] font-semibold"
-                : "text-[#1B1F1C]"
-            )}
-          >
+          <Link href="/" className={navLinkClass(pathname === "/")}>
             {t("home")}
           </Link>
-          <Link
-            href="/about"
-            className={cn(
-              "rounded-full px-3.5 py-2 text-sm font-medium transition-colors hover:bg-[#E8F0E8] hover:text-[#013220]",
-              pathname === "/about"
-                ? "bg-[#E8F0E8] text-[#013220] font-semibold"
-                : "text-[#1B1F1C]"
-            )}
-          >
+          <Link href="/about" className={navLinkClass(pathname === "/about")}>
             {t("about")}
           </Link>
 
           {/* Services Dropdown */}
           <div
             ref={dropdownRef}
-            className="relative"
+            className="relative shrink-0"
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
           >
@@ -125,16 +118,14 @@ export function Navbar({ services }: { services: NavServiceLink[] }) {
               aria-haspopup="true"
               onClick={() => setDropdownOpen((prev) => !prev)}
               className={cn(
-                "inline-flex items-center gap-1 rounded-full px-3.5 py-2 text-sm font-medium transition-colors hover:bg-[#E8F0E8] hover:text-[#013220] cursor-pointer",
-                pathname.startsWith("/services")
-                  ? "bg-[#E8F0E8] text-[#013220] font-semibold"
-                  : "text-[#1B1F1C]"
+                navLinkClass(pathname.startsWith("/services")),
+                "gap-1 cursor-pointer"
               )}
             >
               <span>{t("services")}</span>
               <ChevronDown
                 className={cn(
-                  "h-4 w-4 transition-transform duration-200",
+                  "h-3.5 w-3.5 shrink-0 transition-transform duration-200",
                   dropdownOpen && "rotate-180"
                 )}
               />
@@ -174,48 +165,48 @@ export function Navbar({ services }: { services: NavServiceLink[] }) {
 
           <Link
             href="/services/residential-cleaning"
-            className={cn(
-              "rounded-full px-3.5 py-2 text-sm font-medium transition-colors hover:bg-[#E8F0E8] hover:text-[#013220]",
+            className={navLinkClass(
               pathname === "/services/residential-cleaning"
-                ? "bg-[#E8F0E8] text-[#013220] font-semibold"
-                : "text-[#1B1F1C]"
             )}
           >
             {t("residential")}
           </Link>
           <Link
             href="/services/commercial-cleaning"
-            className={cn(
-              "rounded-full px-3.5 py-2 text-sm font-medium transition-colors hover:bg-[#E8F0E8] hover:text-[#013220]",
+            className={navLinkClass(
               pathname === "/services/commercial-cleaning"
-                ? "bg-[#E8F0E8] text-[#013220] font-semibold"
-                : "text-[#1B1F1C]"
             )}
           >
             {t("commercial")}
           </Link>
           <Link
+            href="/testimonials"
+            className={navLinkClass(pathname === "/testimonials")}
+          >
+            {t("testimonials")}
+          </Link>
+          <Link
             href="/contact"
-            className={cn(
-              "rounded-full px-3.5 py-2 text-sm font-medium transition-colors hover:bg-[#E8F0E8] hover:text-[#013220]",
-              pathname === "/contact"
-                ? "bg-[#E8F0E8] text-[#013220] font-semibold"
-                : "text-[#1B1F1C]"
-            )}
+            className={navLinkClass(pathname === "/contact")}
           >
             {t("contact")}
           </Link>
         </nav>
 
         {/* Actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-2 xl:gap-2.5">
+          <span
+            aria-hidden="true"
+            className="hidden h-5 w-px bg-[#013220]/12 lg:block"
+          />
+
           <button
             type="button"
             onClick={switchLanguage}
             aria-label={t("languageAria")}
-            className="inline-flex h-10 items-center gap-1.5 rounded-full border border-[#013220]/15 bg-[#F7F8F4] px-3 text-xs font-semibold text-[#013220] transition-colors hover:bg-[#E8F0E8] cursor-pointer sm:text-sm"
+            className="inline-flex h-9 shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-[#013220]/15 bg-[#F7F8F4] px-3 text-xs font-semibold text-[#013220] transition-colors hover:bg-[#E8F0E8] cursor-pointer xl:h-10"
           >
-            <Globe className="h-4 w-4 text-[#355E3B]" />
+            <Globe className="h-3.5 w-3.5 shrink-0 text-[#355E3B]" />
             <span>{t("languageLabel")}</span>
           </button>
 
@@ -223,15 +214,17 @@ export function Navbar({ services }: { services: NavServiceLink[] }) {
             href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden h-10 items-center gap-1.5 rounded-full border border-[#014421]/30 bg-white px-3.5 text-sm font-semibold text-[#014421] transition-colors hover:bg-[#E8F0E8] sm:inline-flex"
+            aria-label={t("whatsapp")}
+            title={t("whatsapp")}
+            className="hidden h-9 w-9 shrink-0 items-center justify-center gap-1.5 whitespace-nowrap rounded-full border border-[#014421]/25 bg-white text-xs font-semibold text-[#014421] transition-colors hover:bg-[#E8F0E8] sm:inline-flex xl:h-10 xl:w-10 2xl:w-auto 2xl:px-3.5"
           >
-            <WhatsAppIcon className="h-4 w-4" />
-            <span>{t("whatsapp")}</span>
+            <WhatsAppIcon className="h-4 w-4 shrink-0" />
+            <span className="hidden 2xl:inline">{t("whatsapp")}</span>
           </a>
 
           <Link
             href="/quote"
-            className="hidden h-10 items-center rounded-full bg-[#014421] px-4 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#013220] md:inline-flex"
+            className="hidden h-9 shrink-0 items-center whitespace-nowrap rounded-full bg-[#014421] px-4 text-xs font-semibold text-white shadow-xs transition-colors hover:bg-[#013220] md:inline-flex xl:h-10 xl:px-5 xl:text-sm"
           >
             {t("quote")}
           </Link>
@@ -241,7 +234,7 @@ export function Navbar({ services }: { services: NavServiceLink[] }) {
             aria-expanded={mobileOpen}
             aria-label={mobileOpen ? t("closeMenu") : t("openMenu")}
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#013220]/15 bg-white text-[#013220] transition-colors hover:bg-[#E8F0E8] cursor-pointer lg:hidden"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#013220]/15 bg-white text-[#013220] transition-colors hover:bg-[#E8F0E8] cursor-pointer lg:hidden"
           >
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -321,6 +314,13 @@ export function Navbar({ services }: { services: NavServiceLink[] }) {
               className="rounded-xl px-4 py-3 text-base font-medium text-[#1B1F1C] hover:bg-[#F7F8F4] hover:text-[#013220]"
             >
               {t("commercial")}
+            </Link>
+            <Link
+              href="/testimonials"
+              onClick={() => setMobileOpen(false)}
+              className="rounded-xl px-4 py-3 text-base font-medium text-[#1B1F1C] hover:bg-[#F7F8F4] hover:text-[#013220]"
+            >
+              {t("testimonials")}
             </Link>
             <Link
               href="/faq"

@@ -12,6 +12,7 @@
     "residential": "Residential Cleaning",
     "commercial": "Commercial Cleaning",
     "specialized": "Specialized & Deep Care",
+    "testimonials": "Reviews",
     "faq": "FAQ",
     "contact": "Contact Us",
     "quote": "Book a Service",
@@ -413,11 +414,102 @@
     "contact": "Contact Us",
     "quote": "Get a Quote",
     "faq": "FAQ",
+    "testimonials": "Testimonials",
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions"
   },
   "floatingWhatsapp": {
     "ariaLabel": "Chat with Vistara on WhatsApp",
     "tooltip": "Chat on WhatsApp"
+  },
+  "testimonials": {
+    "metadata": {
+      "title": "Customer Reviews & Testimonials in Qatar",
+      "description": "Read genuine moderated customer reviews of Vistara Cleaning Services across Doha, Lusail, The Pearl, and Al Rayyan, or share your cleaning experience."
+    },
+    "hero": {
+      "eyebrow": "Customer Experiences in Qatar",
+      "title": "What Our Customers Say",
+      "subtitle": "Discover genuine experiences from customers who trust Vistara for professional cleaning services.",
+      "submitCta": "Share Your Review",
+      "googleCta": "Review Us on Google"
+    },
+    "summary": {
+      "title": "Customer Rating Summary",
+      "outOfFive": "out of 5",
+      "basedOn": "{count, plural, =0 {No approved reviews yet} one {Based on 1 approved review} other {Based on # approved reviews}}",
+      "noRatingsYet": "No published ratings yet",
+      "noRatingsDescription": "Summary metrics calculate automatically once moderated customer reviews are approved.",
+      "starLabel": "{stars} Stars",
+      "googleHint": "Already shared feedback or prefer Google?",
+      "googleButton": "Leave a Review on Google"
+    },
+    "filters": {
+      "label": "Filter reviews by cleaning service",
+      "all": "All Reviews",
+      "villa-cleaning": "Villa Cleaning",
+      "apartment-cleaning": "Apartment Cleaning",
+      "deep-cleaning": "Deep Cleaning",
+      "office-cleaning": "Office Cleaning",
+      "sofa-cleaning": "Sofa Cleaning",
+      "carpet-cleaning": "Carpet Cleaning"
+    },
+    "card": {
+      "verifiedBadge": "Verified Customer",
+      "ratingAria": "Rated {rating} out of 5 stars",
+      "generalService": "Cleaning Service"
+    },
+    "empty": {
+      "allTitle": "Be the First to Share Your Experience",
+      "allDescription": "Customer reviews appear here once submitted and approved by our moderation team.",
+      "filteredTitle": "No Reviews for This Service Yet",
+      "filteredDescription": "There are currently no approved reviews matching this service filter.",
+      "resetFilter": "Show All Reviews",
+      "ctaButton": "Write a Review"
+    },
+    "pagination": {
+      "previous": "Previous",
+      "next": "Next",
+      "pageOf": "Page {page} of {total}"
+    },
+    "form": {
+      "eyebrow": "Share Your Feedback",
+      "title": "Submit a Cleaning Review",
+      "subtitle": "We value honest feedback from homeowners, tenants, and businesses across Qatar. All submissions are reviewed before publishing.",
+      "fields": {
+        "customerName": "Customer Name",
+        "customerNamePlaceholder": "Your name or display name",
+        "location": "Area / Location (Optional)",
+        "locationPlaceholder": "e.g., Doha, Lusail, The Pearl",
+        "service": "Service Received",
+        "servicePlaceholder": "Select the service you received",
+        "rating": "Star Rating",
+        "ratingHelp": "Select from 1 to 5 stars",
+        "language": "Preferred Language",
+        "languageEn": "English",
+        "languageAr": "Arabic (العربية)",
+        "review": "Your Review",
+        "reviewPlaceholder": "Tell us about the cleaning quality, punctuality, and attention to detail...",
+        "reviewHint": "Minimum 15 characters, maximum 1,500 characters."
+      },
+      "submitButton": "Submit Review for Moderation",
+      "submitting": "Submitting Review...",
+      "moderationNote": "Submitted reviews are checked by our team and published after moderation. Please do not include external links.",
+      "validation": {
+        "nameMin": "Please enter your name (at least 2 characters).",
+        "serviceRequired": "Please select the cleaning service you received.",
+        "ratingRequired": "Please select a star rating between 1 and 5.",
+        "reviewMin": "Please write at least 15 characters about your experience.",
+        "reviewMax": "Review cannot exceed 1,500 characters."
+      },
+      "success": {
+        "badge": "Submitted for Moderation",
+        "title": "Thank You for Sharing Your Experience",
+        "description": "Your review has been saved and will appear on this page after moderation review.",
+        "submitAnother": "Submit Another Review"
+      },
+      "errorGeneric": "Unable to submit your review right now. Please try again shortly.",
+      "errorLinksNotAllowed": "Website links are not permitted in review descriptions."
+    }
   }
 }
